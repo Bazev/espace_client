@@ -29,7 +29,7 @@
             <th scope="row">${poussette.nom}</th>
             <td>${poussette.couleur.nom}</td>
             <td>${poussette.nbRoues}</td>
-            <td><a>Crée une demande</a></td>
+            <td><a href="priceRequest?ID=${poussette.id}">Créer une demande</a></td>
 
         </tr>
     </c:forEach>
