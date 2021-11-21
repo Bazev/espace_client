@@ -31,7 +31,7 @@
     <label>Options Choisies</label>
     <br>
     <c:forEach items="${options}" var="option">
-        <input type="radio" value="${option}" id="option" name="option">
+        <input type="checkbox" value="${option.id}" id="option" name="option">
         <label for="option">${option.nom}</label>
     </c:forEach>
     <br>
@@ -40,6 +40,7 @@
     <textarea name="info">
     </textarea>
     <br>
+    <input type="hidden" name="ID_ASK" value="${demandeDePrix.id}">
     <input type="submit" value="Envoyer">
 </form>
 

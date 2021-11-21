@@ -46,7 +46,6 @@ public class PriceRequestServlet extends HttpServlet {
             Long idpoussette = Long.parseLong(request.getParameter("ID"));
             Poussette poussette = poussetteService.recupererPoussette(idpoussette);
             request.setAttribute("poussetteItem", poussette);
-            System.out.println(poussette);
         }
         request.setAttribute("poussettes", poussetteService.recupererPoussettes());
         request.setAttribute("options", optionService.recupererOptions());
@@ -55,21 +54,24 @@ public class PriceRequestServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date dateBegin = null;
         Date dateEnd = null;
         try {
             dateBegin = simpleDateFormat.parse(request.getParameter("dateBegin"));
             dateEnd = simpleDateFormat.parse(request.getParameter("dateEnd"));
-        }catch (ParseException parseException) {
+        } catch (ParseException parseException) {
             parseException.printStackTrace();
         }
         DemandeDePrix demandeDePrix = demandeDePrixService.ajouterDemandeDePrix(request.getParameter("email"),
-                request.getParameter("poussette"),dateBegin, dateEnd, request.getParameter("info"));
-
-        demandeDePrix.setOptions(request.getParameter("option"));
-        System.out.println(demandeDePrix);
-
-        doGet(request, response);
+                request.getParameter("poussette"), dateBegin, dateEnd, request.getParameter("info"));
+//        ArrayList optionsList = new ArrayList<>();
+//        optionsList.add(request.getParameter("option"));
+        if (request.getParameter("option") != null)
+        //Long idOption = Long.parseLong(request.getParameter("option"));
+        Option option = optionService.recupererOption(idOption);
+        System.out.println(option);
+        demandeDePrixService.ajouterOption(demandeDePrix.getId(), option.getId());
+        response.sendRedirect("confirmation");
     }
 }
