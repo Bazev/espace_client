@@ -65,13 +65,17 @@ public class PriceRequestServlet extends HttpServlet {
         }
         DemandeDePrix demandeDePrix = demandeDePrixService.ajouterDemandeDePrix(request.getParameter("email"),
                 request.getParameter("poussette"), dateBegin, dateEnd, request.getParameter("info"));
-        ArrayList optionsList = new ArrayList<>();
+
+
+        String[] options = request.getParameterValues("option");
         if (request.getParameter("option") != null) {
-            optionsList.add(request.getParameter("option"));
+            for (String string : options) {
+                Long idOptions = Long.parseLong(string);
+                demandeDePrixService.ajouterOption(demandeDePrix.getId(), idOptions);
+            }
         }
-        //Long idOption = Long.parseLong(request.getParameter("option"));
-        System.out.println(optionsList);
-        demandeDePrixService.ajouterOption(demandeDePrix.getId(), optionsList);
+        System.out.println(options);
+
 
         response.sendRedirect("confirmation");
     }

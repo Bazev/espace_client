@@ -1,6 +1,7 @@
 package fr.humanbooster.fx.poussettes.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -37,7 +38,22 @@ public class IndexServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("poussettes", poussetteService.recupererPoussettes());
+        String poussetteRecherche = null;
+        List<Poussette> poussettesCorrespondantes = new ArrayList<>();
+        List<Poussette> poussettes = poussetteService.recupererPoussettes();
+        int idTri = 1;
+
+        if (request.getParameter("POUSSETTE") != null) {
+            poussetteRecherche = request.getParameter("POUSSETTE");
+        }
+        for (Poussette poussette : poussettes) {
+            if (poussetteRecherche == null || poussette.getNom().toLowerCase().contains(poussetteRecherche.toLowerCase())) {
+                poussettesCorrespondantes.add(poussette);
+            }
+        }
+        request.setAttribute("poussettes", poussettesCorrespondantes);
+        request.setAttribute("poussetteRecherche", poussetteRecherche);
+        //request.setAttribute("poussettes", poussetteService.recupererPoussettes());
         request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
     }
 

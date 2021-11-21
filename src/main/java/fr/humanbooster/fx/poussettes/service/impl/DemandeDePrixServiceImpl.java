@@ -36,23 +36,19 @@ public class DemandeDePrixServiceImpl implements DemandeDePrixService {
                                               Date dateFin, String informationComplementaire) {
         DemandeDePrix demandeDePrix = new DemandeDePrix(email, ps.recupererPoussette(nomPoussetteSelectionnee),
                 dateDebut, dateFin, informationComplementaire);
-       demandesDePrix.add(demandeDePrix);
+        demandesDePrix.add(demandeDePrix);
         return demandeDePrix;
     }
 
-    @Override
-    public DemandeDePrix ajouterOption(Long idDemandeDePrix, List<Option> listOptions) {
-        return null;
-    }
 
-//    @Override
-//    public DemandeDePrix ajouterOption(Long idDemandeDePrix, Long idOption) {
-//        DemandeDePrix demandeDePrix = recupererDemandeDePrix(idDemandeDePrix);
-//        if (demandeDePrix != null) {
-//            demandeDePrix.getOptions().add(os.recupererOption(idOption));
-//        }
-//        return demandeDePrix;
-//    }
+    @Override
+    public DemandeDePrix ajouterOption(Long idDemandeDePrix, Long idOption) {
+        DemandeDePrix demandeDePrix = recupererDemandeDePrix(idDemandeDePrix);
+        if (demandeDePrix != null) {
+            demandeDePrix.getOptions().add(os.recupererOption(idOption));
+        }
+        return demandeDePrix;
+    }
 
     @Override
     public DemandeDePrix getLastRequest() {

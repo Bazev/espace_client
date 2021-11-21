@@ -12,6 +12,10 @@
 <body>
 
 <h2>Catalogue</h2>
+<form method="post">
+    <input type="text" name="POUSSETTE" value="${poussetteRecherche}"><input type="submit" value="Filtrer">
+</form>
+
 
 <table class="table table-striped">
     <thead>

@@ -40,7 +40,6 @@
     <textarea name="info">
     </textarea>
     <br>
-    <input type="hidden" name="ID_ASK" value="${demandeDePrix.id}">
     <input type="submit" value="Envoyer">
 </form>
 

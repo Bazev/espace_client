@@ -1,102 +1,104 @@
 package fr.humanbooster.fx.poussettes.business;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class DemandeDePrix {
 
-	private Long id;
-	private Date dateDemande;
-	private String email;
-	private Poussette poussetteSelectionnee;
-	private List<Option> options;
-	private Date dateDebut;
-	private Date dateFin;
-	
-	private String informationComplementaire;
+    private Long id;
+    private Date dateDemande;
+    private String email;
+    private Poussette poussetteSelectionnee;
+    private List<Option> options;
+    private Date dateDebut;
+    private Date dateFin;
 
-	private static Long compteurId  = new Long(0);
-	
-	public DemandeDePrix(String email, Poussette poussetteSelectionnee, Date dateDebut, Date dateFin,
-			String informationComplementaire) {
-		id = ++compteurId;
-		dateDemande = new Date();
-		this.email = email;
-		this.poussetteSelectionnee = poussetteSelectionnee;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.informationComplementaire = informationComplementaire;
-	}
+    private String informationComplementaire;
 
-	public Long getId() {
-		return id;
-	}
+    private static Long compteurId = new Long(0);
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public DemandeDePrix(String email, Poussette poussetteSelectionnee, Date dateDebut, Date dateFin,
+                         String informationComplementaire) {
+        id = ++compteurId;
+        dateDemande = new Date();
+        this.email = email;
+        this.poussetteSelectionnee = poussetteSelectionnee;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.informationComplementaire = informationComplementaire;
+        options = new ArrayList<>();
+    }
 
-	public Date getDateDemande() {
-		return dateDemande;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setDateDemande(Date dateDemande) {
-		this.dateDemande = dateDemande;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public Date getDateDemande() {
+        return dateDemande;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setDateDemande(Date dateDemande) {
+        this.dateDemande = dateDemande;
+    }
 
-	public Poussette getPoussetteSelectionnee() {
-		return poussetteSelectionnee;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setPoussetteSelectionnee(Poussette poussetteSelectionnee) {
-		this.poussetteSelectionnee = poussetteSelectionnee;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public List<Option> getOptions() {
-		return options;
-	}
+    public Poussette getPoussetteSelectionnee() {
+        return poussetteSelectionnee;
+    }
 
-	public void setOptions(List<Option> options) {
-		this.options = options;
-	}
+    public void setPoussetteSelectionnee(Poussette poussetteSelectionnee) {
+        this.poussetteSelectionnee = poussetteSelectionnee;
+    }
 
-	public Date getDateDebut() {
-		return dateDebut;
-	}
+    public List<Option> getOptions() {
+        return options;
+    }
 
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
+    public void setOptions(List<Option> options) {
+        this.options = options;
+    }
 
-	public Date getDateFin() {
-		return dateFin;
-	}
+    public Date getDateDebut() {
+        return dateDebut;
+    }
 
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
-	}
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
 
-	public String getInformationComplementaire() {
-		return informationComplementaire;
-	}
+    public Date getDateFin() {
+        return dateFin;
+    }
 
-	public void setInformationComplementaire(String informationComplementaire) {
-		this.informationComplementaire = informationComplementaire;
-	}
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
 
-	@Override
-	public String toString() {
-		return "DemandeDePrix [id=" + id + ", dateDemande=" + dateDemande + ", email=" + email
-				+ ", poussetteSelectionnee=" + poussetteSelectionnee + ", options=" + options + ", dateDebut="
-				+ dateDebut + ", dateFin=" + dateFin + ", informationComplementaire=" + informationComplementaire + "]";
-	}
-	
+    public String getInformationComplementaire() {
+        return informationComplementaire;
+    }
+
+    public void setInformationComplementaire(String informationComplementaire) {
+        this.informationComplementaire = informationComplementaire;
+    }
+
+    @Override
+    public String toString() {
+        return "DemandeDePrix [id=" + id + ", dateDemande=" + dateDemande + ", email=" + email
+                + ", poussetteSelectionnee=" + poussetteSelectionnee + ", options=" + options + ", dateDebut="
+                + dateDebut + ", dateFin=" + dateFin + ", informationComplementaire=" + informationComplementaire + "]";
+    }
+
 }
