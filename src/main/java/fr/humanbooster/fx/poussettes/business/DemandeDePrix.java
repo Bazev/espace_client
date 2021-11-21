@@ -7,9 +7,7 @@ public class DemandeDePrix {
 
 	private Long id;
 	private Date dateDemande;
-	
 	private String email;
-	
 	private Poussette poussetteSelectionnee;
 	private List<Option> options;
 	private Date dateDebut;

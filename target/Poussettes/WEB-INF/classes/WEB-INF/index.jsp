@@ -36,6 +36,6 @@
     </tbody>
 </table>
 
-
+<a href="priceRequest">Créer une demande</a>
 </body>
 </html>
