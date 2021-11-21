@@ -13,7 +13,9 @@
 
 <h2>Catalogue</h2>
 <form method="post">
-    <input type="text" name="POUSSETTE" value="${poussetteRecherche}"><input type="submit" value="Filtrer">
+    <label>Nom </label><input type="text" name="POUSSETTE" value="${poussetteRecherche}"><input type="submit" value="Filtrer">
+
+<a href="index" class="btn btn-danger" type="button">Retirer</a>
 </form>
 
 
