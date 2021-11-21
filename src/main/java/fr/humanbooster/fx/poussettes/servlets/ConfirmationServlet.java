@@ -21,10 +21,7 @@ public class ConfirmationServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<DemandeDePrix> demandeDePrix = demandeDePrixService.recupererDemandesDePrix();
-        System.out.println(demandeDePrix);
-        request.setAttribute("PriceRequest", demandeDePrix);
-
+        request.setAttribute("ask", demandeDePrixService.getLastRequest().toString());
 
         request.getRequestDispatcher("WEB-INF/confirmation.jsp").forward(request, response);
 

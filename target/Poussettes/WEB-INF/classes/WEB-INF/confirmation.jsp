@@ -13,9 +13,7 @@
 </head>
 <body>
 <p>Votre message a bien été envoyé</p>
-<c:forEach items="${demandeDePrix}" var="demande">
-    ${demande.email}
-</c:forEach>
 
+${ask}
 </body>
 </html>

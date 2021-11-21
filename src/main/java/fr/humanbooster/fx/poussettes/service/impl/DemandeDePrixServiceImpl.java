@@ -5,45 +5,59 @@ import java.util.Date;
 import java.util.List;
 
 import fr.humanbooster.fx.poussettes.business.DemandeDePrix;
+import fr.humanbooster.fx.poussettes.business.Option;
 import fr.humanbooster.fx.poussettes.service.DemandeDePrixService;
 import fr.humanbooster.fx.poussettes.service.OptionService;
 import fr.humanbooster.fx.poussettes.service.PoussetteService;
 
 public class DemandeDePrixServiceImpl implements DemandeDePrixService {
 
-	private static List<DemandeDePrix> demandesDePrix = new ArrayList<>();
-	private OptionService os = new OptionServiceImpl();
-	private PoussetteService ps = new PoussetteServiceImpl();
-	
-	@Override
-	public List<DemandeDePrix> recupererDemandesDePrix() {
-		return demandesDePrix;
-	}
+    private static List<DemandeDePrix> demandesDePrix = new ArrayList<>();
+    private OptionService os = new OptionServiceImpl();
+    private PoussetteService ps = new PoussetteServiceImpl();
 
-	@Override
-	public DemandeDePrix recupererDemandeDePrix(Long id) {
-		for (DemandeDePrix demandeDePrix : demandesDePrix) {
-			if (demandeDePrix.getId().equals(id)) {
-				return demandeDePrix;
-			}
-		}
-		return null;
-	}
+    @Override
+    public List<DemandeDePrix> recupererDemandesDePrix() {
+        return demandesDePrix;
+    }
 
-	@Override
-	public DemandeDePrix ajouterDemandeDePrix(String email, String nomPoussetteSelectionnee, Date dateDebut,
-			Date dateFin, String informationComplementaire) {
-		DemandeDePrix demandeDePrix = new DemandeDePrix(email, ps.recupererPoussette(nomPoussetteSelectionnee), dateDebut, dateFin, informationComplementaire);
-		return demandeDePrix;
-	}
+    @Override
+    public DemandeDePrix recupererDemandeDePrix(Long id) {
+        for (DemandeDePrix demandeDePrix : demandesDePrix) {
+            if (demandeDePrix.getId().equals(id)) {
+                return demandeDePrix;
+            }
+        }
+        return null;
+    }
 
-	@Override
-	public DemandeDePrix ajouterOption(Long idDemandeDePrix, Long idOption) {
-		DemandeDePrix demandeDePrix = recupererDemandeDePrix(idDemandeDePrix);
-		if (demandeDePrix != null) {
-			demandeDePrix.getOptions().add(os.recupererOption(idOption));
-		}
-		return demandeDePrix;
-	}
+    @Override
+    public DemandeDePrix ajouterDemandeDePrix(String email, String nomPoussetteSelectionnee, Date dateDebut,
+                                              Date dateFin, String informationComplementaire) {
+        DemandeDePrix demandeDePrix = new DemandeDePrix(email, ps.recupererPoussette(nomPoussetteSelectionnee),
+                dateDebut, dateFin, informationComplementaire);
+       demandesDePrix.add(demandeDePrix);
+        return demandeDePrix;
+    }
+
+    @Override
+    public DemandeDePrix ajouterOption(Long idDemandeDePrix, List<Option> listOptions) {
+        return null;
+    }
+
+//    @Override
+//    public DemandeDePrix ajouterOption(Long idDemandeDePrix, Long idOption) {
+//        DemandeDePrix demandeDePrix = recupererDemandeDePrix(idDemandeDePrix);
+//        if (demandeDePrix != null) {
+//            demandeDePrix.getOptions().add(os.recupererOption(idOption));
+//        }
+//        return demandeDePrix;
+//    }
+
+    @Override
+    public DemandeDePrix getLastRequest() {
+        DemandeDePrix demandeDePrix2 = demandesDePrix.get(demandesDePrix.size() - 1);
+        return demandeDePrix2;
+    }
 
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import fr.humanbooster.fx.poussettes.business.DemandeDePrix;
+import fr.humanbooster.fx.poussettes.business.Option;
 
 public interface DemandeDePrixService {
 
@@ -13,6 +14,8 @@ public interface DemandeDePrixService {
 	
 	public DemandeDePrix ajouterDemandeDePrix(String email, String nomPoussetteSelectionnee, Date dateDebut, Date dateFin, String informationComplementaire);
 	
-	public DemandeDePrix ajouterOption(Long idDemandeDePrix, Long idOption);
+	public DemandeDePrix ajouterOption(Long idDemandeDePrix, List<Option>listOptions);
+
+	public DemandeDePrix getLastRequest();
 
 }
