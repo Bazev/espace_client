@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.humanbooster.fx.poussettes.business.Poussette;
+import fr.humanbooster.fx.poussettes.service.CouleurService;
 import fr.humanbooster.fx.poussettes.service.PoussetteService;
 import fr.humanbooster.fx.poussettes.service.impl.CouleurServiceImpl;
 import fr.humanbooster.fx.poussettes.service.impl.OptionServiceImpl;
@@ -24,6 +25,7 @@ public class IndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private PoussetteService poussetteService = new PoussetteServiceImpl();
     private List<Poussette> poussettes = null;
+    private CouleurService couleurService = new CouleurServiceImpl();
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -41,16 +43,24 @@ public class IndexServlet extends HttpServlet {
         String poussetteRecherche = null;
         List<Poussette> poussettesCorrespondantes = new ArrayList<>();
         List<Poussette> poussettes = poussetteService.recupererPoussettes();
+        Long idColor = null;
         int idTri = 1;
 
         if (request.getParameter("POUSSETTE") != null) {
             poussetteRecherche = request.getParameter("POUSSETTE");
         }
+
+        if (request.getParameter("COULEUR") != null && !request.getParameter("COULEUR").equals("")) {
+            idColor = Long.parseLong(request.getParameter("COULEUR"));
+        }
         for (Poussette poussette : poussettes) {
-            if (poussetteRecherche == null || poussette.getNom().toLowerCase().contains(poussetteRecherche.toLowerCase())) {
+            if ((idColor == null || poussette.getCouleur().getId().equals(idColor))
+                    &&
+                    (poussetteRecherche == null || poussette.getNom().toLowerCase().contains(poussetteRecherche.toLowerCase()))) {
                 poussettesCorrespondantes.add(poussette);
             }
         }
+        request.setAttribute("couleurs", couleurService.recupererCouleurs());
         request.setAttribute("poussettes", poussettesCorrespondantes);
         request.setAttribute("poussetteRecherche", poussetteRecherche);
         //request.setAttribute("poussettes", poussetteService.recupererPoussettes());

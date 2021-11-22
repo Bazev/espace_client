@@ -13,9 +13,14 @@
 
 <h2>Catalogue</h2>
 <form method="post">
-    <label>Nom </label><input type="text" name="POUSSETTE" value="${poussetteRecherche}"><input type="submit" value="Filtrer">
+    <label>Nom </label><input type="text" name="POUSSETTE" value="${poussetteRecherche}">
+<label>Couleur:</label><select name="COULEUR"><c:forEach items="${couleurs}" var="couleur">
+    <option value="${couleur.id}"<c:if test="${couleur.id eq idColor}">SELECTED</c:if>>${couleur.nom}</option> </c:forEach> </select>
 
-    <a type="button" href="index">Enlever filtrer</a><a href="index" class="btn btn-danger" type="button">Retirer</a>
+    <input type="submit" value="Filtrer">
+
+
+<a href="index" class="btn btn-danger" type="button">Retirer</a>
 </form>
 
 
