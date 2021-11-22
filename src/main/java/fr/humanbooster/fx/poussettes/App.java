@@ -15,11 +15,11 @@ public class App {
 		System.out.println(cs.recupererCouleurs());
 		System.out.println(cs.recupererCouleur(4L));
 		// Affiche la poussette rouge avec 4 roues et dont le nom contient by2
-		System.out.println(ps.recupererPoussettes("by2", 2L, (byte) 4 ));
+		System.out.println(ps.recupererPoussettes("by2", 2L, (long) 4 ));
 		// Affiche les poussettes disposant de 4 roues
-		System.out.println("4 roues: " + ps.recupererPoussettes(null, null, (byte) 4 ));
+		System.out.println("4 roues: " + ps.recupererPoussettes(null, null, (long) 4 ));
 		// Affiche les poussettes disposant de 4 roues et dont le nom contient by2
-		System.out.println(ps.recupererPoussettes("by2", null, (byte) 4 ));
+		System.out.println(ps.recupererPoussettes("by2", null, (long) 4 ));
 
 		// Affiche les poussettes disposant de 4 roues et dont le nom contient by2
 		System.out.println(ps.recupererPoussettes("by1", null, null));

@@ -8,7 +8,7 @@ public interface PoussetteService {
 
 	public List<Poussette> recupererPoussettes();
 	
-	public List<Poussette> recupererPoussettes(String nom, Long idCouleur, Byte nbRoues);
+	public List<Poussette> recupererPoussettes(String nom, Long idCouleur, Long nbRoues);
 	
 	public Poussette recupererPoussette(String nom);
 	

@@ -15,12 +15,18 @@
 <form method="post">
     <label>Nom </label><input type="text" name="POUSSETTE" value="${poussetteRecherche}">
 <label>Couleur:</label><select name="COULEUR"><c:forEach items="${couleurs}" var="couleur">
-    <option value="${couleur.id}"<c:if test="${couleur.id eq idColor}">SELECTED</c:if>>${couleur.nom}</option> </c:forEach> </select>
+    <option value="">Toutes</option><c:if test="${couleur.id eq idColor}">selected</c:if>>${couleur.nom}</option> </c:forEach> </select>
+<label>Nombre de roues</label>
+
+        <input type="radio" value="3" id="nbRoues" name="NBROUES">
+        <label for="nbRoues">3</label>
+    <input type="radio" value="4"name="NBROUES">
+    <label for="nbRoues">4</label>
 
     <input type="submit" value="Filtrer">
 
 
-<a href="index" class="btn btn-danger" type="button">Retirer</a>
+<a href="index" type="button">Retirer</a>
 </form>
 
 

@@ -8,12 +8,12 @@ public class Poussette {
 
 	private Couleur couleur;
 	
-	private byte nbRoues;
+	private Long nbRoues;
 	private float poids;
 
 	private static Long compteurId  = new Long(0);
 
-	public Poussette(String nom, String description, Couleur couleur, byte nbRoues, float poids) {
+	public Poussette(String nom, String description, Couleur couleur, Long nbRoues, float poids) {
 		super();
 		this.id = ++compteurId;
 		this.nom = nom;
@@ -47,11 +47,11 @@ public class Poussette {
 		this.description = description;
 	}
 
-	public byte getNbRoues() {
+	public Long getNbRoues() {
 		return nbRoues;
 	}
 
-	public void setNbRoues(byte nbRoues) {
+	public void setNbRoues(Long nbRoues) {
 		this.nbRoues = nbRoues;
 	}
 

@@ -14,11 +14,11 @@ public class PoussetteServiceImpl implements PoussetteService {
 
 	public PoussetteServiceImpl() {
 		if (poussettes.isEmpty()) {
-			poussettes.add(new Poussette("Bimby1", "Bimby1", cs.recupererCouleur(1L), (byte) 3, 5f));
-			poussettes.add(new Poussette("Bimby1", "Bimby1", cs.recupererCouleur(1L), (byte) 3, 5f));
-			poussettes.add(new Poussette("Bimby2", "Bimby2", cs.recupererCouleur(2L), (byte) 4, 6f));
-			poussettes.add(new Poussette("Bimby2", "Bimby2", cs.recupererCouleur(3L), (byte) 4, 6f));
-			poussettes.add(new Poussette("Bimby3", "Bimby3", cs.recupererCouleur(4L), (byte) 3, 7f));
+			poussettes.add(new Poussette("Bimby1", "Bimby1", cs.recupererCouleur(1L), (long) 3, 5f));
+			poussettes.add(new Poussette("Bimby1", "Bimby1", cs.recupererCouleur(1L), (long) 3, 5f));
+			poussettes.add(new Poussette("Bimby2", "Bimby2", cs.recupererCouleur(2L), (long) 4, 6f));
+			poussettes.add(new Poussette("Bimby2", "Bimby2", cs.recupererCouleur(3L), (long) 4, 6f));
+			poussettes.add(new Poussette("Bimby3", "Bimby3", cs.recupererCouleur(4L), (long) 3, 7f));
 		}
 	}
 
@@ -28,12 +28,12 @@ public class PoussetteServiceImpl implements PoussetteService {
 	}
 
 	@Override
-	public List<Poussette> recupererPoussettes(String nom, Long idCouleur, Byte nbRoues) {
+	public List<Poussette> recupererPoussettes(String nom, Long idCouleur, Long nbRoues) {
 		List<Poussette> resultat = new ArrayList<>();
 
 		for (Poussette poussette : poussettes) {
 			// Les trois paramètres ont été transmis
-			if (nom!=null && poussette.getNom().indexOf(nom) > 0 && nbRoues!=null && poussette.getNbRoues() == (byte) nbRoues && idCouleur!=null && idCouleur > 0 && poussette.getCouleur().getId() == idCouleur)
+			if (nom!=null && poussette.getNom().indexOf(nom) > 0 && nbRoues!=null && poussette.getNbRoues() == (long) nbRoues && idCouleur!=null && idCouleur > 0 && poussette.getCouleur().getId() == idCouleur)
 			{
 				resultat.add(poussette);
 			}
@@ -43,17 +43,17 @@ public class PoussetteServiceImpl implements PoussetteService {
 				resultat.add(poussette);
 			}			
 			// nb roues et couleur ont été transmis
-			else if (nom==null && nbRoues!=null && poussette.getNbRoues() == (byte) nbRoues && idCouleur!=null && idCouleur > 0 && poussette.getCouleur().getId() == idCouleur)
+			else if (nom==null && nbRoues!=null && poussette.getNbRoues() == (long) nbRoues && idCouleur!=null && idCouleur > 0 && poussette.getCouleur().getId() == idCouleur)
 			{
 				resultat.add(poussette);				
 			}
 			// nb roues a été transmi
-			else if (nom==null && nbRoues!=null && poussette.getNbRoues() == (byte) nbRoues && idCouleur==null)
+			else if (nom==null && nbRoues!=null && poussette.getNbRoues() == (long) nbRoues && idCouleur==null)
 			{
 				resultat.add(poussette);				
 			}
 			// nb roues et nom ont été transmis
-			else if (nom!=null && poussette.getNom().indexOf(nom) > 0 && nbRoues!=null && poussette.getNbRoues() == (byte) nbRoues && idCouleur==null)
+			else if (nom!=null && poussette.getNom().indexOf(nom) > 0 && nbRoues!=null && poussette.getNbRoues() == (long) nbRoues && idCouleur==null)
 			{
 				resultat.add(poussette);
 			}

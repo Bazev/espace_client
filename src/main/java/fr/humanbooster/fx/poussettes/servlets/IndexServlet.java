@@ -44,7 +44,7 @@ public class IndexServlet extends HttpServlet {
         List<Poussette> poussettesCorrespondantes = new ArrayList<>();
         List<Poussette> poussettes = poussetteService.recupererPoussettes();
         Long idColor = null;
-        int idTri = 1;
+        Long nbRoues = null;
 
         if (request.getParameter("POUSSETTE") != null) {
             poussetteRecherche = request.getParameter("POUSSETTE");
@@ -53,10 +53,15 @@ public class IndexServlet extends HttpServlet {
         if (request.getParameter("COULEUR") != null && !request.getParameter("COULEUR").equals("")) {
             idColor = Long.parseLong(request.getParameter("COULEUR"));
         }
+        if (request.getParameter("NBROUES") != null) {
+            nbRoues = Long.parseLong(request.getParameter("NBROUES"));
+        }
         for (Poussette poussette : poussettes) {
             if ((idColor == null || poussette.getCouleur().getId().equals(idColor))
                     &&
-                    (poussetteRecherche == null || poussette.getNom().toLowerCase().contains(poussetteRecherche.toLowerCase()))) {
+                    (poussetteRecherche == null || poussette.getNom().toLowerCase().contains(poussetteRecherche.toLowerCase()))
+                    &&
+                    (nbRoues == null || poussette.getNbRoues().equals(nbRoues))) {
                 poussettesCorrespondantes.add(poussette);
             }
         }
